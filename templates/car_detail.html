@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Detail</title>
+    <link rel="stylesheet" href="{% static 'css/detail_css.css' %}">
+    <style>
+        table{
+            width: 550px;
+        }
+    </style>
+</head>
+<body>
+{% include 'header.html' %}
+<button type="button" class="btn btn-outline-light">
+    <a href="/car_list/" style="text-decoration: none; color: black">На список автомобилей</a>
+</button>
+
+<button type="button" class="btn btn-outline-info">
+    <a href="/car_list/{{object.id}}/delete/" style="text-decoration: none; color: black">Удалить</a>
+</button>
+
+<button type="button" class="btn btn-outline-info">
+    <a href="/car_list/{{object.id}}/update/" style="text-decoration: none; color: black">Редактировать</a>
+</button>
+
+<button type="button" class="btn btn-outline-info">
+    <a href="/create_car/" style="text-decoration: none; color: black">Добавить</a>
+</button>
+
+<button type="button" class="btn btn-outline-info">
+    <a href="/car_reviews/" style="text-decoration: none; color: black">Оставить отзыв</a>
+</button>
+
+<div class="container">
+    <div class="post">
+        <div class="post-image">
+            <img src="{{object.image.url}}">
+        </div>
+        <div class="post-content">
+            <div class="post-header">
+                <h1>{{object.title}}</h1>
+                <div class="post-meta">
+                    <time class="cost">{{object.cost}} сом</time>
+                    <span class="type">{{object.car_type}}</span>
+                    <span class="create_date">{{object.created_date}}</span>
+                    <p><b>{{object.specifications}}</b></p>
+                    <p><b>Модельный год: {{object.model_year}}</b></p>
+                    <p><b>Страна изготовитель: {{object.manufacturing_country}}</b></p>
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+            <p>{{object.description}}</p>
+            <table border="4">
+                <tr>
+                    <td>Отзывы: </td> &nbsp; <td> Звезды: </td> &nbsp; <td>Дата создания: </td>
+                </tr>
+
+                {% for j in object.comment_object.all %}
+                <tr>
+                    <td>{{j.text}}</td> <td>{{j.rate_stars}}</td> <td>{{j.created_date}}</td>
+                </tr>
+                {% endfor %}
+<!--                {% for review in object.comment_object.all %}-->
+<!--            <div class="media py-5">-->
+<!--&lt;!&ndash;                <img src="bundles/images/te2.jpg" class="mr-3 img-fluid" alt="image">&ndash;&gt;-->
+<!--                <div class="media-body mt-4">-->
+<!--                    <h5 class="mt-0 editContent">-->
+<!--                        {{ review.name }}-->
+<!--                    </h5>-->
+<!--                    <p class="mt-2 editContent">-->
+<!--                        {{ review.text }}-->
+<!--                    </p>-->
+<!--                    <p class="mt-2 editContent">-->
+<!--                        {{ review.rate_stars }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        {% endfor %}-->
+            </table>
+        </div>
+    </div>
+</div>
+<center>
+<table border="5">
+    <tr>
+        <td><iframe src="{{object.video}}" frameborder="0" width="640" height="420"></iframe></td>
+    </tr>
+</table>
+</center>
+
+{% include 'footer.html' %}
+</body>
+</html>

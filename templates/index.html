@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+{% include 'header.html' %}
+<div>
+    <url>
+
+        <ol>
+            {% for i in book %}
+            <li>
+            <h2>{{i.title}}</h2>
+            <p>{{i.description}}</p>
+            <img src="{{i.image.url}}" alt="" width="400" height="400">
+             <p>{{i.created_date}}</p>
+                </li>
+            {% endfor %}
+        </ol>
+    </url>
+</div>
+</body>
+</html>

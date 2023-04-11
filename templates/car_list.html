@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car List</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+{% include 'header.html' %}
+<center>
+    <h1>Каталог моделей</h1>
+<br><br>
+{% for i in object_list %}
+<div class="card" style="width: 18rem;">
+  <img src="{{i.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{i.title}}</h5>
+    <p class="card-text">{{i.description}}</p>
+    <a href="/car_list/{{i.id}}" class="btn btn-primary">Подробнее</a>
+    <a href="/car_reviews/" class="btn btn-primary">Оставить отзыв</a>
+  </div>
+</div>
+<br><br><br><br>
+<hr><hr>
+{% endfor %}
+</center>
+
+{% include 'footer.html' %}
+</body>
+</html>

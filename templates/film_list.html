@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parsing</title>
+</head>
+<body>
+    <form action="{% url 'search' %}" method="GET" class="d-flex" role="search">
+        <input type="search" type="text" name="q" class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+        <button type="submit" class="btn btn-outline-success">Поиск</button>
+    </form>
+<center>
+  <ol>
+    {% for i in object_list %}
+    <li>
+      <h1>{{i.title_name}}</h1>
+      <img src="{{i.image}}" alt="" width="200" height="300">
+      <p><a href="{{i.title_url}}">Перейти к фильму</a></p>
+    </li>
+    {% endfor %}
+  </ol>
+</center>
+</body>
+</html>

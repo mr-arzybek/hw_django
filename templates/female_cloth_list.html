@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Female Product List</title>
+</head>
+<body>
+<div>
+  <ol>
+    {% for i in object_list %}
+    <li>
+      <h2><a href="/cloths/{{i.id}}">{{i.name}}</a></h2>
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+
+</body>
+</html>
